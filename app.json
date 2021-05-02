@@ -1,0 +1,28 @@
+{
+	 "name": "Scrapbox-duplicater",
+    "description": "Scrapboxのノートを自動で転送するものです",
+    "keywords": [
+      "Scrapbox",
+      "puppeteer"
+    ],
+  "repository": "https://github.com/tkgshn/scrapbox-duplicater",
+  "env": {
+      "YOUR_SID": {
+              "description": "別途説明あり",
+              "value": ""
+      },
+      "SOURCE": {
+        "description": "インポート元(本来はprivateプロジェクト)",
+        "value": ""
+      },
+      "DESTINATION": {
+        "description": "インポート先(本来はpublicプロジェクト)",
+        "value": ""
+      }
+     	}
+  "buildpacks": [
+      {
+        "url": "https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack"
+      }
+    ]
+    }
