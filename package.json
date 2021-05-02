@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "transfer": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "puppeteer": "^8.0.0"  
+  }
+}
