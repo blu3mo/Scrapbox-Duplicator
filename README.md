@@ -27,13 +27,11 @@ Scrapboxの非公開・公開プロジェクトを分けて運用する際に面
 ## コントリビューション
  [CONTRIBUTING.md](https://github.com/tkgshn/scrapbox-duplicater/blob/master/CONTRIBUTING.md) 
 
-
 ## 著者
-
 -   [bluemo](https://twitter.com/blu3mo)
 -   [tkgshn](https://twitter.com/tkgshn)
 
-このプロジェクトへの[貢献者のリスト](https://github.com/tkgshn/scrapbox-duplicater/blob/master/CONTRIBUTING.md)もご覧ください。
+このプロジェクトへの[貢献者のリスト](https://github.com/tkgshn/scrapbox-duplicater/graphs/contributors)もご覧ください。
 
 ## ライセンス
 
@@ -46,5 +44,4 @@ Scrapboxの非公開・公開プロジェクトを分けて運用する際に面
 
 ## 謝辞
 
--   blumo天才や
--   scrapbox愛してる
+-   Scrapboxを開発しているNota, Inc.の皆さんに感謝します
