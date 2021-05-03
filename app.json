@@ -24,6 +24,9 @@
   "buildpacks": [
     {
       "url": "https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
     }
   ],
   "addons": [
