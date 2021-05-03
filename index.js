@@ -10,7 +10,7 @@ async function exportJSON(projectName, sid) {
         method: "get",
         url: "https://scrapbox.io/api/users/me",
         headers: {
-            "Cookie" : cookie
+            "Cookie" : cookie,
         }
     })
     const csrfToken = meRes.data.csrfToken;
@@ -33,24 +33,24 @@ async function importJSON(projectName, fileName, sid) {
     });
     const page = await browser.newPage();
 
+    //ページを開く
     await page.setCookie({name: 'connect.sid', value: sid, domain: 'scrapbox.io'});
     await page.goto(url.toString());
     await page.waitFor(2000);
 
+    //アップロード
     const inputUploadHandle = await page.$('input[name="import-file"]');
     inputUploadHandle.uploadFile(fileName);
     await page.waitFor(4000);
 
-    const overwriteCheckBox = await page.$('input[name="overwrite"]');
-
+    //インポート
     const importSubmitButton = await page.$x("//button[contains(., 'Import Pages')]");
     await importSubmitButton[0].click();
-
-    await page.screenshot("./shot.png")
     await page.waitFor(60000); //転送量に応じて調整
 
     await browser.close();
 }
+
 
 (async() => {
     const env = process.env;
@@ -60,9 +60,10 @@ async function importJSON(projectName, fileName, sid) {
 
     const exportedJSON = await exportJSON(exportingProjectName, sid);
     exportedJSON.pages = exportedJSON.pages.filter((page) => {
-        return (page.lines.filter(line => {
-           return line.includes("[public.icon]")
-       }).length != 0)
+        const linesWithPublicIcon = page.lines.filter(line => {
+            return line.includes("[public.icon]");
+        })
+        return linesWithPublicIcon.length != 0
     })
     fs.writeFileSync('/tmp/tmp.json', JSON.stringify(exportedJSON));
     await importJSON(importingProjectName, "/tmp/tmp.json", sid);
