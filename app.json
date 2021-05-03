@@ -17,7 +17,7 @@
       "value": ""
     },
     "DESTINATION_PROJECT_NAME": {
-      "description": "転送先のプロジェクト名",
+      "description": "転送先のプロジェクト名 (注意: このプロジェクトにてページが追加/上書きされます!)",
       "value": ""
     }
   },
