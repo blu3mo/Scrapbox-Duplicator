@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const axios = require('axios');
 const fs = require('fs');
+const dotenv = require('dotenv').config();
 
 async function exportJSON(projectName, sid) {
     const cookie = "connect.sid=" + sid;
@@ -52,9 +53,10 @@ async function importJSON(projectName, fileName, sid) {
 }
 
 (async() => {
-    const sid = "YOUR_SID"
-    const exportingProjectName = "SOURCE" //インポート元(本来はprivateプロジェクト)
-    const importingProjectName = "DESTINATION" //インポート先(本来はpublicプロジェクト)
+    const env = process.env;
+    const sid = env.SID;
+    const exportingProjectName = env.SOURCE_PROJECT_NAME //インポート元(本来はprivateプロジェクト)
+    const importingProjectName = env.DESTINATION_PROJECT_NAME //インポート先(publicプロジェクト)
 
     const exportedJSON = await exportJSON(exportingProjectName, sid);
     exportedJSON.pages = exportedJSON.pages.filter((page) => {
