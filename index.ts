@@ -1,4 +1,4 @@
-import { config } from "https://deno.land/x/dotenv@v2.0.0/mod.ts";
+import "https://deno.land/x/dotenv/load.ts";
 
 interface Page {
   title: string;
@@ -69,20 +69,24 @@ async function importJSON(
   );
 }
 
-const env = config();
-const sid = env["SID"];
-const exportingProjectName = env["SOURCE_PROJECT_NAME"]; //インポート元(本来はprivateプロジェクト)
-const importingProjectName = env["DESTINATION_PROJECT_NAME"]; //インポート先(publicプロジェクト)
 
-console.log(`Exporting a json file from "/${exportingProjectName}"...`);
-const pages = await exportJSON(exportingProjectName, sid);
-console.log("exported: ", pages);
-const importPages = pages.filter(({ lines }) =>
-  lines.some((line) => line.includes("[public.icon]"))
-);
-if (importPages.length > 0) {
-  console.log(`Importing the page data to "/${importingProjectName}"...`);
-  await importJSON(importingProjectName, sid, importPages);
+const sid = Deno.env.get("SID");
+const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
+const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
+
+if (sid !== undefined && exportingProjectName !== undefined && importingProjectName !== undefined) {
+  console.log(`Exporting a json file from "/${exportingProjectName}"...`);
+  const pages = await exportJSON(exportingProjectName, sid);
+  console.log("exported: ", pages);
+  const importPages = pages.filter(({ lines }) =>
+      lines.some((line) => line.includes("[public.icon]"))
+  );
+  if (importPages.length > 0) {
+    console.log(`Importing the page data to "/${importingProjectName}"...`);
+    await importJSON(importingProjectName, sid, importPages);
+  } else {
+    console.log("No page to be imported found.");
+  }
 } else {
-  console.log("No page to be imported found.");
+  console.log("Environmental variables lacking")
 }
