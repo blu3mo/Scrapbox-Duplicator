@@ -22,7 +22,7 @@
   },
   "buildpacks": [
     {
-      "url": "https://github.com/chibat/heroku-buildpack-deno.git"
+      "url": "https://github.com/chibat/heroku-buildpack-deno"
     }
   ],
   "addons": [
