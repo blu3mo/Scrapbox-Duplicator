@@ -72,9 +72,7 @@ async function importJSON(
 const sid = Deno.env.get("SID");
 const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
 const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
-const defaultSharingMode = Deno.env.get("DEFAULT_SHARING_MODE") ?? "private";
-
-const duplicateByDefault: boolean = (defaultSharingMode === "public")
+const shouldDuplicateByDefault: boolean = (Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True");
 
 if (sid !== undefined && exportingProjectName !== undefined && importingProjectName !== undefined) {
   console.log(`Exporting a json file from "/${exportingProjectName}"...`);
@@ -87,7 +85,7 @@ if (sid !== undefined && exportingProjectName !== undefined && importingProjectN
     } else if (lines.some((line) => line.includes("[public.icon]"))) {
       return true;
     } else {
-      return duplicateByDefault;
+      return shouldDuplicateByDefault;
     }
   });
   if (importingPages.length > 0) {
