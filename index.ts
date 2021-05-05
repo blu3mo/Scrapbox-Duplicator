@@ -69,24 +69,31 @@ async function importJSON(
   );
 }
 
-
 const sid = Deno.env.get("SID");
 const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
 const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
+const shouldDuplicateByDefault: boolean = (Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True");
 
 if (sid !== undefined && exportingProjectName !== undefined && importingProjectName !== undefined) {
   console.log(`Exporting a json file from "/${exportingProjectName}"...`);
   const pages = await exportJSON(exportingProjectName, sid);
   console.log("exported: ", pages);
-  const importPages = pages.filter(({ lines }) =>
-      lines.some((line) => line.includes("[public.icon]"))
-  );
-  if (importPages.length > 0) {
-    console.log(`Importing the page data to "/${importingProjectName}"...`);
-    await importJSON(importingProjectName, sid, importPages);
+
+  const importingPages = pages.filter(({ lines }) => {
+    if (lines.some((line) => line.includes("[private.icon]"))) {
+      return false;
+    } else if (lines.some((line) => line.includes("[public.icon]"))) {
+      return true;
+    } else {
+      return shouldDuplicateByDefault;
+    }
+  });
+  if (importingPages.length > 0) {
+    console.log(`Importing ${importingPages.length} pages to "/${importingProjectName}"...`);
+    await importJSON(importingProjectName, sid, importingPages);
   } else {
     console.log("No page to be imported found.");
   }
 } else {
-  console.log("Environmental variables lacking")
+  console.log("Environmental variables are missing.");
 }
