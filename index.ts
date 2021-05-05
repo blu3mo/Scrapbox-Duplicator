@@ -76,9 +76,7 @@ const defaultSharingMode = Deno.env.get("DEFAULT_SHARING_MODE") ?? "private";
 
 const duplicateByDefault: boolean = (defaultSharingMode === "public")
 
-if (sid === undefined || exportingProjectName === undefined || importingProjectName === undefined) {
-  console.log("Environmental variables are missing.");
-} else {
+if (sid !== undefined && exportingProjectName !== undefined && importingProjectName !== undefined) {
   console.log(`Exporting a json file from "/${exportingProjectName}"...`);
   const pages = await exportJSON(exportingProjectName, sid);
   console.log("exported: ", pages);
@@ -98,4 +96,6 @@ if (sid === undefined || exportingProjectName === undefined || importingProjectN
   } else {
     console.log("No page to be imported found.");
   }
+} else {
+  console.log("Environmental variables are missing.");
 }
