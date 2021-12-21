@@ -2,7 +2,11 @@ import "https://deno.land/x/dotenv/load.ts";
 
 interface Page {
   title: string;
-  lines: string[];
+  lines: {
+    text: string;
+    created: number;
+    updated: number;
+  }[];
   id?: string;
   created?: number;
   updated?: number;
@@ -34,6 +38,7 @@ async function exportJSON(projectName: string, sid: string) {
         Cookie: cookie(sid),
         "X-CSRF-TOKEN": await csrfToken(sid),
       },
+      body: JSON.stringify({ metadata: true }),
     },
   );
   const { pages } = (await res.json()) as ExportResponse;
@@ -72,24 +77,30 @@ async function importJSON(
 const sid = Deno.env.get("SID");
 const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
 const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
-const shouldDuplicateByDefault: boolean = (Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True");
+const shouldDuplicateByDefault: boolean =
+  (Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True");
 
-if (sid !== undefined && exportingProjectName !== undefined && importingProjectName !== undefined) {
+if (
+  sid !== undefined && exportingProjectName !== undefined &&
+  importingProjectName !== undefined
+) {
   console.log(`Exporting a json file from "/${exportingProjectName}"...`);
   const pages = await exportJSON(exportingProjectName, sid);
   console.log("exported: ", pages);
 
   const importingPages = pages.filter(({ lines }) => {
-    if (lines.some((line) => line.includes("[private.icon]"))) {
+    if (lines.some((line) => line.text.includes("[private.icon]"))) {
       return false;
-    } else if (lines.some((line) => line.includes("[public.icon]"))) {
+    } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
       return true;
     } else {
       return shouldDuplicateByDefault;
     }
   });
   if (importingPages.length > 0) {
-    console.log(`Importing ${importingPages.length} pages to "/${importingProjectName}"...`);
+    console.log(
+      `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
+    );
     await importJSON(importingProjectName, sid, importingPages);
   } else {
     console.log("No page to be imported found.");
