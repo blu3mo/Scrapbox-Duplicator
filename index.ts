@@ -11,49 +11,45 @@ ensureString(exportingProjectName);
 ensureString(importingProjectName);
 
 console.log(`Exporting a json file from "/${exportingProjectName}"...`);
-try {
-  const result = await exportPages(exportingProjectName, {
+const result = await exportPages(exportingProjectName, {
+  sid,
+  metadata: true,
+});
+if (!result.ok) {
+  const error = new Error();
+  error.name = `${result.name} when exporting a json file`;
+  error.message = result.message;
+  throw error;
+}
+const { pages } = result;
+console.log("exported: ", pages);
+
+const importingPages = pages.filter(({ lines }) => {
+  if (lines.some((line) => line.text.includes("[private.icon]"))) {
+    return false;
+  } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
+    return true;
+  } else {
+    return shouldDuplicateByDefault;
+  }
+});
+
+if (importingPages.length === 0) {
+  console.log("No page to be imported found.");
+} else {
+  console.log(
+    `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
+  );
+  const result = await importPages(importingProjectName, {
+    pages: importingPages,
+  }, {
     sid,
-    metadata: true,
   });
   if (!result.ok) {
     const error = new Error();
-    error.name = `${result.name} when exporting a json file`;
+    error.name = `${result.name} when importing pages`;
     error.message = result.message;
     throw error;
   }
-  const { pages } = result;
-  console.log("exported: ", pages);
-
-  const importingPages = pages.filter(({ lines }) => {
-    if (lines.some((line) => line.text.includes("[private.icon]"))) {
-      return false;
-    } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
-      return true;
-    } else {
-      return shouldDuplicateByDefault;
-    }
-  });
-
-  if (importingPages.length === 0) {
-    console.log("No page to be imported found.");
-  } else {
-    console.log(
-      `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
-    );
-    const result = await importPages(importingProjectName, {
-      pages: importingPages,
-    }, {
-      sid,
-    });
-    if (!result.ok) {
-      const error = new Error();
-      error.name = `${result.name} when importing pages`;
-      error.message = result.message;
-      throw error;
-    }
-    console.log(result.message);
-  }
-} catch (e) {
-  console.error(e);
+  console.log(result.message);
 }
