@@ -17,37 +17,42 @@ try {
     metadata: true,
   });
   if (!result.ok) {
-    console.error(`Export Error[${result.name}]:\n\t${result.message}`);
-  } else {
-    const { pages } = result;
-    console.log("exported: ", pages);
+    const error = new Error();
+    error.name = `${result.name} when exporting a json file`;
+    error.message = result.message;
+    throw error;
+  }
+  const { pages } = result;
+  console.log("exported: ", pages);
 
-    const importingPages = pages.filter(({ lines }) => {
-      if (lines.some((line) => line.text.includes("[private.icon]"))) {
-        return false;
-      } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
-        return true;
-      } else {
-        return shouldDuplicateByDefault;
-      }
-    });
-    if (importingPages.length > 0) {
-      console.log(
-        `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
-      );
-      const result = await importPages(importingProjectName, {
-        pages: importingPages,
-      }, {
-        sid,
-      });
-      if (result.ok) {
-        console.log(result.message);
-      } else {
-        console.error(`Import Error[${result.name}]:\n\t${result.message}`);
-      }
+  const importingPages = pages.filter(({ lines }) => {
+    if (lines.some((line) => line.text.includes("[private.icon]"))) {
+      return false;
+    } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
+      return true;
     } else {
-      console.log("No page to be imported found.");
+      return shouldDuplicateByDefault;
     }
+  });
+
+  if (importingPages.length === 0) {
+    console.log("No page to be imported found.");
+  } else {
+    console.log(
+      `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
+    );
+    const result = await importPages(importingProjectName, {
+      pages: importingPages,
+    }, {
+      sid,
+    });
+    if (!result.ok) {
+      const error = new Error();
+      error.name = `${result.name} when importing pages`;
+      error.message = result.message;
+      throw error;
+    }
+    console.log(result.message);
   }
 } catch (e) {
   console.error(e);
