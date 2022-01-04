@@ -1,11 +1,10 @@
-import "https://deno.land/x/dotenv/load.ts";
 import { exportPages, importPages } from "./deps.ts";
 
 const sid = Deno.env.get("SID");
 const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
 const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
-const shouldDuplicateByDefault: boolean =
-  (Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True");
+const shouldDuplicateByDefault =
+  Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True";
 
 if (
   sid !== undefined && exportingProjectName !== undefined &&
