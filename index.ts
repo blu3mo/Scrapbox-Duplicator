@@ -22,7 +22,10 @@ if (!result.ok) {
   throw error;
 }
 const { pages } = result;
-console.log("exported: ", pages);
+console.log(`Export ${pages.length}pages:`);
+for (const page of pages) {
+  console.log(`\t${page.title}`);
+}
 
 const importingPages = pages.filter(({ lines }) => {
   if (lines.some((line) => line.text.includes("[private.icon]"))) {
