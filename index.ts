@@ -13,7 +13,7 @@ ensureString(importingProjectName);
 console.log(`Exporting a json file from "/${exportingProjectName}"...`);
 const result = await exportPages(exportingProjectName, {
   sid,
-  metadata: false,
+  metadata: true,
 });
 if (!result.ok) {
   console.error(`Export Error[${result.name}]:\n\t${result.message}`);
@@ -22,9 +22,9 @@ if (!result.ok) {
   console.log("exported: ", pages);
 
   const importingPages = pages.filter(({ lines }) => {
-    if (lines.some((line) => line.includes("[private.icon]"))) {
+    if (lines.some((line) => line.text.includes("[private.icon]"))) {
       return false;
-    } else if (lines.some((line) => line.includes("[public.icon]"))) {
+    } else if (lines.some((line) => line.text.includes("[public.icon]"))) {
       return true;
     } else {
       return shouldDuplicateByDefault;
