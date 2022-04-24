@@ -1,4 +1,4 @@
-import { ensureString, exportPages, importPages } from "./deps.ts";
+import { assertString, exportPages, importPages } from "./deps.ts";
 
 const sid = Deno.env.get("SID");
 const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
@@ -6,9 +6,9 @@ const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //イン�
 const shouldDuplicateByDefault =
   Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True";
 
-ensureString(sid);
-ensureString(exportingProjectName);
-ensureString(importingProjectName);
+assertString(sid);
+assertString(exportingProjectName);
+assertString(importingProjectName);
 
 console.log(`Exporting a json file from "/${exportingProjectName}"...`);
 const result = await exportPages(exportingProjectName, {
@@ -17,11 +17,11 @@ const result = await exportPages(exportingProjectName, {
 });
 if (!result.ok) {
   const error = new Error();
-  error.name = `${result.name} when exporting a json file`;
-  error.message = result.message;
+  error.name = `${result.value.name} when exporting a json file`;
+  error.message = result.value.message;
   throw error;
 }
-const { pages } = result;
+const { pages } = result.value;
 console.log(`Export ${pages.length}pages:`);
 for (const page of pages) {
   console.log(`\t${page.title}`);
@@ -50,9 +50,9 @@ if (importingPages.length === 0) {
   });
   if (!result.ok) {
     const error = new Error();
-    error.name = `${result.name} when importing pages`;
-    error.message = result.message;
+    error.name = `${result.value.name} when importing pages`;
+    error.message = result.value.message;
     throw error;
   }
-  console.log(result.message);
+  console.log(result.value);
 }
