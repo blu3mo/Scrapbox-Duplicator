@@ -22,4 +22,4 @@ jobs:
       - uses: denoland/setup-deno@v1
 
       - name: Export from Scrapbox(/PROJECT_NAME to PROJECT_NAME.json)
-        run: deno run --allow-net=scrapbox.io --allow-read=./ --allow-write --allow-env export_from_scrapbox/main.ts
+        run: deno run --allow-net=scrapbox.io --allow-read=./ --allow-write --allow-env index.ts
