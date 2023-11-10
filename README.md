@@ -15,10 +15,8 @@ Scrapboxの非公開・公開プロジェクトを分けて運用する際に面
 以下の2ステップで実行可能です。
 
 1. 下のボタン（'Deploy to Heroku'）を押し、必要な情報を入力。
-2. Heroku
-   Schedulerで`deno run --allow-net=scrapbox.io --allow-read=./ --allow-env index.ts`を定期実行するように設定
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Fblu3mo%2Fscrapbox-duplicator%2Ftree%2Fmaster)
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
 
 ### 必要なもの
 
