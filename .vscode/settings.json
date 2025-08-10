@@ -1,5 +1,10 @@
 {
   "deno.enable": true,
   "deno.lint": true,
-  "deno.unstable": true
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  }
 }

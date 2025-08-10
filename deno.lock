@@ -1,0 +1,97 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@core/unknownutil@4": "4.3.0",
+    "jsr:@cosense/types@0.10": "0.10.10",
+    "jsr:@std/encoding@1": "1.0.10",
+    "jsr:@takker/md5@0.1": "0.1.0",
+    "npm:option-t@51": "51.1.1"
+  },
+  "jsr": {
+    "@core/unknownutil@4.3.0": {
+      "integrity": "538a3687ffa81028e91d148818047df219663d0da671d906cecd165581ae55cc"
+    },
+    "@cosense/types@0.10.10": {
+      "integrity": "16575916902f22a7d401edbd2305324cfcb378aa2bc39a4fef7ba81a1c84a0a1"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    },
+    "@takker/md5@0.1.0": {
+      "integrity": "4c423d8247aadf7bcb1eb83c727bf28c05c21906e916517395d00aa157b6eae0"
+    }
+  },
+  "npm": {
+    "option-t@51.1.1": {
+      "integrity": "sha512-Ww13j9NVqnGpxsaSr1y0o35Xq1WcopAeJkAbk9DWlKRBgFKYLuJwEU1GzWUtkhBhRQY0st5kfdtT02JO6YqEEw=="
+    }
+  },
+  "remote": {
+    "https://deno.land/x/dotenv@v3.2.2/load.ts": "cbd76a0aee01aad8d09222afaa1dd04b84d9d3e44637503b01bf77a91df9e041",
+    "https://deno.land/x/dotenv@v3.2.2/mod.ts": "077b48773de9205266a0b44c3c3a3c3083449ed64bb0b6cc461b95720678d38e",
+    "https://deno.land/x/dotenv@v3.2.2/util.ts": "693730877b13f8ead2b79b2aa31e2a0652862f7dc0c5f6d2f313f4d39c7b7670",
+    "https://deno.land/x/unknownutil@v3.18.1/_typeutil.ts": "774d207c47fb5350f468cdcf68e80f1bc6e278f6bc77c04d17a601618c49d2c1",
+    "https://deno.land/x/unknownutil@v3.18.1/inspect.ts": "33e61bdfed94cd586d66600813b528fa93046a2802d8144277b92f0fa5e5f10e",
+    "https://deno.land/x/unknownutil@v3.18.1/is.ts": "0c552cf85f8eeca86b41d892da627168185eaabfd79931e39cfdf00a70de6269",
+    "https://deno.land/x/unknownutil@v3.18.1/metadata.ts": "04fcfbca1338e44b4067be4bde51b863dc4c91b279541c78620e617d3e77e01a",
+    "https://deno.land/x/unknownutil@v3.18.1/mod.ts": "c38cc1fe09a108ecca944adde2dd2f37c1c00a83c964f0a3b8a7debd62d33fc8",
+    "https://deno.land/x/unknownutil@v3.18.1/util.ts": "051fb654a110aa8bc9e034ce03aea2d39349fdf723da6ce6b783e5299327444d",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/auth.ts": "a20ead373a3ad22156aebda3de886761fa78782cf716d4302bccc8b7b8a9ef29",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getCachedAt.ts": "1baf07b637b5f9d74401b7cbec100c5085415a0bdf93bc04778ab5484a317ab2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getCodeBlock.ts": "f5e8554e49f779fb4cfca73f71dc3cc1927694f8ffb007694768bfba5db5191d",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getCodeBlocks.ts": "90adaa646f4322d1bee36fbc299c2ee13340a9cde096f8ed3a718f1c62fb57b5",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getGyazoToken.ts": "371cccaa397e14ef95e6b09f451a146e10991e6025bd161f09eae2c4734dcf07",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getTweetInfo.ts": "fccdafbaf8c947fe1aebea488876e3ed26048278d441d4276e963435ac68ceff",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/getWebPageTitle.ts": "1af02390fe58c59def10d361065038d41cb8ef5260e18bbabaf29f3d84da46c2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/link.ts": "8c940a1431e39a166ea51d9807b84642c24bb3ee81f6345b3f7bf6e1c3c51ff3",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/mod.ts": "636817ea7bc2994c2326599ccec812ab3744d39111812752f58e41afe69f04b2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/options.ts": "f9d2b7c447a32d93c2574650946b045aacc9935dc29a20a460d9ba209cadc842",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/page-data.ts": "06da70557db9d6ed81cbadc77485e5058bf6a492ccde1c8f18d6d8a8844c1ae7",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/pages.ts": "2dcda8a4877d89c75c6a413d181fc97c080c92184366203aa01d05673c6263ef",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/parseHTTPError.ts": "d15f96fb7255c11393320209a206b01a35c9d627f4c89a0ed6c1a00e8db1791b",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/profile.ts": "f74bb824b61cf4a32719614c1a7341584e3fdbbfbcb6cf2ec36685d4bcf5ce8c",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/project.ts": "630771e0f5b55ec9f3500e23fbcaabe66660fcaf5be5f5f41467b7fa14913904",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/replaceLinks.ts": "76932cb438bbab07a4fcf00f56a4d4bf41d8de0cd09ee45057dc1789a0001917",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/responseIntoResult.ts": "0c2976998d9f61cb5c4d1a66950d44df0518313941a0e4170c1cb8e60648ec73",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/robustFetch.ts": "afcf395cc181832371da6b606e641a425a44648573528f2fafe6bf7e5f84803a",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/search.ts": "86e02195d90fb77b5d48e0197e0e5f87feea937adb6704e8975b5298b30fd6d5",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/snapshot.ts": "0185f7094b4a2f878030a6cd47a67da6ca0dd57aab679f3205dc2a5aa41e4849",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/table.ts": "e032ca816f7d53613dd6990d901be33814e7248c5561275ef6fa014a4e119984",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/rest/uploadToGCS.ts": "b440614d34c059ebaf9ac644a0adc053e5953ddc83d1540c7a3be0905f3f80a0",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/title.ts": "293da3ee2659cddd4485011723d67f316584437398abfcf809a6f3a2d237c14b",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.14/websocket/_codeBlock.ts": "555e5157f458f1a199c5da3b5842929badcaad2e5f8893f3c2edb54b8a31afa1",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/auth.ts": "a20ead373a3ad22156aebda3de886761fa78782cf716d4302bccc8b7b8a9ef29",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getCachedAt.ts": "1baf07b637b5f9d74401b7cbec100c5085415a0bdf93bc04778ab5484a317ab2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getCodeBlock.ts": "f5e8554e49f779fb4cfca73f71dc3cc1927694f8ffb007694768bfba5db5191d",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getCodeBlocks.ts": "90adaa646f4322d1bee36fbc299c2ee13340a9cde096f8ed3a718f1c62fb57b5",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getGyazoToken.ts": "371cccaa397e14ef95e6b09f451a146e10991e6025bd161f09eae2c4734dcf07",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getTweetInfo.ts": "fccdafbaf8c947fe1aebea488876e3ed26048278d441d4276e963435ac68ceff",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/getWebPageTitle.ts": "1af02390fe58c59def10d361065038d41cb8ef5260e18bbabaf29f3d84da46c2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/link.ts": "8c940a1431e39a166ea51d9807b84642c24bb3ee81f6345b3f7bf6e1c3c51ff3",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/mod.ts": "636817ea7bc2994c2326599ccec812ab3744d39111812752f58e41afe69f04b2",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/options.ts": "f9d2b7c447a32d93c2574650946b045aacc9935dc29a20a460d9ba209cadc842",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/page-data.ts": "06da70557db9d6ed81cbadc77485e5058bf6a492ccde1c8f18d6d8a8844c1ae7",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/pages.ts": "2dcda8a4877d89c75c6a413d181fc97c080c92184366203aa01d05673c6263ef",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/parseHTTPError.ts": "d15f96fb7255c11393320209a206b01a35c9d627f4c89a0ed6c1a00e8db1791b",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/profile.ts": "f74bb824b61cf4a32719614c1a7341584e3fdbbfbcb6cf2ec36685d4bcf5ce8c",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/project.ts": "630771e0f5b55ec9f3500e23fbcaabe66660fcaf5be5f5f41467b7fa14913904",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/replaceLinks.ts": "76932cb438bbab07a4fcf00f56a4d4bf41d8de0cd09ee45057dc1789a0001917",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/responseIntoResult.ts": "0c2976998d9f61cb5c4d1a66950d44df0518313941a0e4170c1cb8e60648ec73",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/robustFetch.ts": "afcf395cc181832371da6b606e641a425a44648573528f2fafe6bf7e5f84803a",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/search.ts": "86e02195d90fb77b5d48e0197e0e5f87feea937adb6704e8975b5298b30fd6d5",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/snapshot.ts": "0185f7094b4a2f878030a6cd47a67da6ca0dd57aab679f3205dc2a5aa41e4849",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/table.ts": "e032ca816f7d53613dd6990d901be33814e7248c5561275ef6fa014a4e119984",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/rest/uploadToGCS.ts": "b440614d34c059ebaf9ac644a0adc053e5953ddc83d1540c7a3be0905f3f80a0",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/title.ts": "293da3ee2659cddd4485011723d67f316584437398abfcf809a6f3a2d237c14b",
+    "https://raw.githubusercontent.com/takker99/scrapbox-userscript-std/0.29.16/websocket/_codeBlock.ts": "555e5157f458f1a199c5da3b5842929badcaad2e5f8893f3c2edb54b8a31afa1"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@core/unknownutil@4",
+      "jsr:@cosense/types@0.10",
+      "jsr:@std/encoding@1",
+      "jsr:@takker/md5@0.1",
+      "npm:option-t@51"
+    ]
+  }
+}

@@ -1,25 +1,28 @@
 name: Duplicater
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 21 * * *' # JST 6:00
-
 env:
+  DENO_VERSION: 2.x
   SID: ${{ secrets.SID }}
   PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
   SOURCE_PROJECT_NAME: ${{ secrets.SOURCE_PROJECT_NAME }}
   DESTINATION_PROJECT_NAME: ${{ secrets.DESTINATION_PROJECT_NAME }}
   SHOULD_DUPLICATE_BY_DEFAULT: ${{ secrets.SHOULD_DUPLICATE_BY_DEFAULT }}
 
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 21 * * *" # JST 6:00
+
 jobs:
   build:
     permissions:
-      contents: 'write'
+      contents: "write"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: ${{ env.DENO_VERSION }}
 
       - name: Export from Scrapbox(/PROJECT_NAME to PROJECT_NAME.json)
         run: deno run --allow-net=scrapbox.io --allow-read=./ --allow-write --allow-env index.ts

@@ -1,14 +1,20 @@
-import { assertString, exportPages, importPages } from "./deps.ts";
+import type { ExportedData } from "@cosense/types/rest";
+import { ensure, exportPages, importPages, isString } from "./deps.ts";
 
-const sid = Deno.env.get("SID");
-const exportingProjectName = Deno.env.get("SOURCE_PROJECT_NAME"); //インポート元(本来はprivateプロジェクト)
-const importingProjectName = Deno.env.get("DESTINATION_PROJECT_NAME"); //インポート先(publicプロジェクト)
+const sid = ensure(Deno.env.get("SID"), isString);
+// インポート元 (privateプロジェクト)
+const exportingProjectName = ensure(
+  Deno.env.get("SOURCE_PROJECT_NAME"),
+  isString,
+);
+// インポート先 (publicプロジェクト)
+const importingProjectName = ensure(
+  Deno.env.get("DESTINATION_PROJECT_NAME"),
+  isString,
+);
+// [private.icon] も [public.icon] も無いページを複製するかどうか
 const shouldDuplicateByDefault =
   Deno.env.get("SHOULD_DUPLICATE_BY_DEFAULT") === "True";
-
-assertString(sid);
-assertString(exportingProjectName);
-assertString(importingProjectName);
 
 console.log(`Exporting a json file from "/${exportingProjectName}"...`);
 const result = await exportPages(exportingProjectName, {
@@ -17,11 +23,11 @@ const result = await exportPages(exportingProjectName, {
 });
 if (!result.ok) {
   const error = new Error();
-  error.name = `${result.value.name} when exporting a json file`;
-  error.message = result.value.message;
+  error.name = `${result.err.name} when exporting a json file`;
+  error.message = result.err.message;
   throw error;
 }
-const { pages } = result.value;
+const { pages } = result.val as ExportedData<true>;
 console.log(`Export ${pages.length}pages:`);
 for (const page of pages) {
   console.log(`\t${page.title}`);
@@ -43,16 +49,16 @@ if (importingPages.length === 0) {
   console.log(
     `Importing ${importingPages.length} pages to "/${importingProjectName}"...`,
   );
-  const result = await importPages(importingProjectName, {
-    pages: importingPages,
-  }, {
-    sid,
-  });
+  const result = await importPages(
+    importingProjectName,
+    { pages: importingPages },
+    { sid },
+  );
   if (!result.ok) {
     const error = new Error();
-    error.name = `${result.value.name} when importing pages`;
-    error.message = result.value.message;
+    error.name = `${result.err.name} when importing pages`;
+    error.message = result.err.message;
     throw error;
   }
-  console.log(result.value);
+  console.log(result.val);
 }

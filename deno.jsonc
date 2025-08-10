@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@core/unknownutil": "jsr:@core/unknownutil@^4.0.0",
+    "@cosense/types/rest": "jsr:@cosense/types@0.10/rest",
+    "@std/encoding": "jsr:@std/encoding@1",
+    "@takker/md5": "jsr:@takker/md5@0.1",
+    "option-t": "npm:option-t@^51.0.0"
+  }
+}
